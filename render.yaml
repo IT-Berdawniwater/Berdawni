@@ -13,10 +13,9 @@ services:
         value: 948888722679467
       - key: CLOUDINARY_API_SECRET
         sync: false
-
-staticSites:
-  - type: static
+  - type: web
     name: berdawni-frontend
+    runtime: static
     buildCommand: echo "No build needed"
     staticPublishPath: frontend/dist/berdawni-front-end
     routes:
