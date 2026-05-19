@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: berdawni-frontend
+    runtime: node
+    buildCommand: echo "No build needed"
+    startCommand: cd frontend && node server.js
+    envVars:
+      - key: PORT
+        value: 9000
