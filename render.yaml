@@ -1,9 +1,25 @@
 services:
   - type: web
-    name: berdawni-frontend
+    name: berdawni-backend
     runtime: node
-    buildCommand: echo "No build needed"
-    startCommand: cd frontend && node server.js
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node app.js
     envVars:
-      - key: PORT
-        value: 9000
+      - key: CONNECTION_URL_NEW_DEV
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        value: berdawniwater
+      - key: CLOUDINARY_API_KEY
+        value: 948888722679467
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+
+staticSites:
+  - type: static
+    name: berdawni-frontend
+    buildCommand: echo "No build needed"
+    staticPublishPath: frontend/dist/berdawni-front-end
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
